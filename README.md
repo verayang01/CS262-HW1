@@ -25,7 +25,7 @@ In the `config.ini` file, set the `host` to your desired server IP and `port` to
 
 ```sh
 [server]
-host = 10.0.0.126
+host = 127.0.0.1
 port = 5555
 ```
 
@@ -98,7 +98,7 @@ In the `config.ini` file, set the `host` to your desired server IP and `port` to
 
 ```sh
 [server]
-host = 10.0.0.126
+host = 127.0.0.1
 port = 5555
 ```
 
