@@ -1,0 +1,94 @@
+syntax = "proto3";
+
+package chat;
+
+service ChatService {
+    rpc Login (LoginRequest) returns (LoginResponse);
+    rpc SendMessage (SendMessageRequest) returns (SendMessageResponse);
+    rpc ReadUnreadMessages (ReadUnreadMessagesRequest) returns (ReadUnreadMessagesResponse);
+    rpc ReadMessages (ReadMessagesRequest) returns (ReadMessagesResponse);
+    rpc GetUnreadMessages (GetUnreadMessagesRequest) returns (GetUnreadMessagesResponse);
+    rpc ListAccounts (ListAccountsRequest) returns (ListAccountsResponse);
+    rpc DeleteMessage (DeleteMessageRequest) returns (DeleteMessageResponse);
+    rpc DeleteAccount (DeleteAccountRequest) returns (DeleteAccountResponse);
+}
+
+message LoginRequest {
+    string username = 1;
+    string password = 2;
+}
+
+message LoginResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message SendMessageRequest {
+    string sender = 1;
+    string recipient = 2;
+    string message = 3;
+}
+
+message SendMessageResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message ReadUnreadMessagesRequest {
+    string username = 1;
+    int32 per_page = 2;
+}
+
+message ReadUnreadMessagesResponse {
+    repeated Message messages = 1;
+}
+
+message ReadMessagesRequest {
+    string username = 1;
+}
+
+message ReadMessagesResponse {
+    repeated Message messages = 1;
+}
+
+message GetUnreadMessagesRequest {
+    string username = 1;
+}
+
+message GetUnreadMessagesResponse {
+    repeated Message unread_messages = 1;
+}
+
+message ListAccountsRequest {
+    string query = 1;
+}
+
+message ListAccountsResponse {
+    repeated string list_accounts = 1;
+}
+
+message DeleteMessageRequest {
+    string username = 1;
+    string sender = 2;
+    string message = 3;
+    int32 idx = 4;
+}
+
+message DeleteMessageResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message DeleteAccountRequest {
+    string username = 1;
+}
+
+message DeleteAccountResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message Message {
+    string sender = 1;  
+    string message = 2;
+}
